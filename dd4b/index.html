@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-dd4b: 引用投稿 - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-dd4b: \u5f15\u7528\u6295\u7a3f";
+        var mkdocs_page_input_path = "dd4b/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/">FEP-521a: アクターの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../a4ed/">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c16b/">FEP-c16b: MFM関数のフォーマット</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../d556/">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-dd4b: 引用投稿</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">動機</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">仕様</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">基本的な引用投稿</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">添付ファイル付き引用投稿</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">ハッシュタグ付き引用投稿</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">メンション付き引用投稿</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">返信としての引用投稿</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">ユーザーインターフェースのガイダンス</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">セキュリティに関する考慮事項</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_12">プライバシーに関する考慮事項</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">共有されることへの同意</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">参照</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_15">著作権</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Dd4b</li>
+      <li class="breadcrumb-item active">FEP-dd4b: 引用投稿</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/dd4b/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-dd4b">FEP-dd4b: 引用投稿</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025-08-17</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/dd4b/fep-dd4b.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p>この FEP は、<a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0</a> および <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a> で定義されている、引用投稿、すなわち追加のコメントを伴う <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-announce">Announce</a> アクティビティを作成するためのメカニズムを記述します。</p>
+<h2 id="_2">動機</h2>
+<p>他のアクターによって作成されたコンテンツやアクティビティを再配布することは、ソーシャルウェブにおける主要な活動です。<a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-announce">Announce</a> アクティビティタイプは、この活動を表すために Activity Streams 2.0 ("AS2") で定義されています。<code>Announce</code> は ActivityPub で共有機能を提供するために使用されます。詳細については、<a href="https://www.w3.org/TR/activitypub/#announce-activity-inbox">7.11 Announce Activity (sharing)</a> を参照してください。</p>
+<p>AS2 の <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity">Activity</a> オブジェクトタイプは、<a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity">Object</a> タイプのすべてのプロパティを継承します。これは、<strong>すべて</strong>のアクティビティタイプが、ソーシャルウェブ上の第一級コンテンツとして表現するための豊富なプロパティセットを持っていることを意味します。<code>Announce</code> タイプも例外ではありません。</p>
+<p>しかし、ActivityPub 仕様は、共有コンテンツに追加のコメント、メタデータ、およびファイルを提供するためにこれらのプロパティを使用する方法を記述していません。「引用ツイート（<a href="https://en.wikipedia.org/wiki/Tweet_(social_media)#Quote_tweets">"quote Tweets"</a>）」、「コメント付きリポスト」、「引用投稿（<a href="https://help.instagram.com/279780184399513">"quote posts"</a>）」と呼ばれるこの種の拡張された共有は、共有オブジェクトに追加のコンテキストを与えます。</p>
+<p>この FEP は、このコメントを提供するために <code>content</code> プロパティを使用する方法、およびこのコンテキストで役立つ可能性のある他のプロパティについて記述します。これは Activity Streams 2.0 の一般的な使用に適用されます。ActivityPub に適用される箇所は明記されています。</p>
+<h2 id="_3">仕様</h2>
+<ul>
+<li><code>Announce</code> アクティビティの <code>object</code> プロパティは、共有コンテンツへの参照でなければなりません（MUST）。これは、JSON オブジェクトまたは URL のいずれかとして、AS2 の <code>Object</code> または <code>Link</code> であっても構いません（MAY）。</li>
+<li><code>Announce</code> アクティビティの <code>content</code> プロパティは、共有コンテンツに関する追加のコメントを提供するために使用されても構いません（MAY）。</li>
+<li><code>Announce</code> アクティビティの <code>attachment</code> プロパティは、共有コンテンツまたはコメントに関連する追加のメディアコンテンツを提供するために使用されても構いません（MAY）。</li>
+<li><code>Announce</code> アクティビティの <code>tag</code> プロパティは、共有コンテンツまたはコメントに関する、<a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mention">Mention</a> オブジェクトや <a href="https://swicg.github.io/miscellany/">Hashtag</a> オブジェクトなどの追加のメタデータを提供するために使用されても構いません（MAY）。</li>
+<li><code>Announce</code> アクティビティの <code>inReplyTo</code> プロパティは、<code>Announce</code> アクティビティを返信として別のオブジェクトに接続するために使用されても構いません（MAY）。返信先のオブジェクトは共有コンテンツであっても構いませんが、これは一般的ではありません。また、別の会話の一部である場合もあります。</li>
+<li><code>inReplyTo</code> プロパティを持つ <code>Announce</code> アクティビティは、返信先のオブジェクトの <code>replies</code> コレクションに含まれるべきです（SHOULD）。</li>
+<li><code>Announce</code> アクティビティは、<a href="https://www.w3.org/TR/activitypub/#announce-activity-inbox">7.11 Announce Activity (sharing)</a> で定義されているように、追加のプロパティに関わらず、共有コンテンツの <code>shares</code> コレクションの一部として数えられるべきです（SHOULD）。</li>
+</ul>
+<h2 id="_4">例</h2>
+<h3 id="_5">基本的な引用投稿</h3>
+<p>これは、アクターが別のノートをコメント付きで共有する、シンプルな引用投稿を表します。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/aaabbbccc&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+  &quot;to&quot;: &quot;https://example.com/users/evan/followers&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+  },
+  &quot;content&quot;: &quot;I think that this is a good point and should be shared.&quot;
+}
+</code></pre>
+<h3 id="_6">添付ファイル付き引用投稿</h3>
+<p>これは、アクターが別のノートをコメントと画像付きで共有する、添付ファイル付き引用投稿を表します。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/dddeeefff&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+  &quot;to&quot;: &quot;https://example.com/users/evan/followers&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+  },
+  &quot;content&quot;: &quot;The author describes the rock formations of Crete; here's an example from my recent visit.&quot;,
+  &quot;attachment&quot;: {
+    &quot;type&quot;: &quot;Link&quot;,
+    &quot;mediaType&quot;: &quot;image/jpeg&quot;,
+    &quot;url&quot;: &quot;https://example.com/images/1234.jpg&quot;
+  }
+}
+</code></pre>
+<h3 id="_7">ハッシュタグ付き引用投稿</h3>
+<p>これは、アクターが別のノートをコメントとハッシュタグ付きで共有する、ハッシュタグ付き引用投稿を表します。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/ghhiijjkk&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+  &quot;to&quot;: &quot;https://example.com/users/evan/followers&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+  },
+  &quot;content&quot;: &quot;Great description of Cretan geology; saving it for my next trip. &lt;a href='https://example.com/tags/evanstriptocrete'&gt;#evanstriptocrete&lt;/a&gt;&quot;,
+  &quot;tag&quot;: {
+    &quot;type&quot;: &quot;Hashtag&quot;,
+    &quot;href&quot;: &quot;https://example.com/tags/evanstriptocrete&quot;,
+    &quot;name&quot;: &quot;evanstriptocrete&quot;
+  }
+}
+</code></pre>
+<h3 id="_8">メンション付き引用投稿</h3>
+<p>これは、アクターが別のノートをコメントとメンション付きで共有する、メンション付き引用投稿を表します。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/lllmmnnoo&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+  &quot;to&quot;: [&quot;https://example.com/users/evan/followers&quot;, &quot;https://example.com/users/jeff&quot;],
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+  },
+  &quot;content&quot;: &quot;&lt;a href='https://example.com/users/jeff'&gt;@jeff&lt;/a&gt; you might like this Cretan geology article.&quot;,
+  &quot;tag&quot;: {
+    &quot;type&quot;: &quot;Mention&quot;,
+    &quot;href&quot;: &quot;https://example.com/users/jeff&quot;,
+    &quot;name&quot;: &quot;jeff&quot;
+  }
+}
+</code></pre>
+<p>引用されたコンテンツの作者もメンションできます。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/pppqqqrrr&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+  &quot;to&quot;: [&quot;https://example.com/users/evan/followers&quot;, &quot;https://example.com/users/franklin&quot;],
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+  },
+  &quot;content&quot;: &quot;&lt;a href='https://example.com/users/franklin'&gt;@franklin&lt;/a&gt; wrote this great Cretan geology article.&quot;,
+  &quot;tag&quot;: {
+    &quot;type&quot;: &quot;Mention&quot;,
+    &quot;href&quot;: &quot;https://example.com/users/franklin&quot;,
+    &quot;name&quot;: &quot;franklin&quot;
+  }
+}
+</code></pre>
+<h3 id="_9">返信としての引用投稿</h3>
+<p>引用投稿は、多くの場合、別の情報源からの証拠や情報を共有するために、返信として使用できます。</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://example.com/activities/rrrsssttt&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;actor&quot;: &quot;https://example.com/users/jeff&quot;,
+  &quot;to&quot;: &quot;https://example.com/users/jeff/followers&quot;,
+  &quot;content&quot;: &quot;Does anyone know where I can find a good article on Cretan geology?&quot;,
+  &quot;replies&quot;: {
+    &quot;id&quot;: &quot;https://example.com/activities/rrrsssttt/replies&quot;,
+    &quot;type&quot;: &quot;Collection&quot;,
+    &quot;totalItems&quot;: 1,
+    &quot;items&quot;: [
+      {
+        &quot;id&quot;: &quot;https://example.com/activities/lllmmnnoo&quot;,
+        &quot;type&quot;: &quot;Announce&quot;,
+        &quot;actor&quot;: &quot;https://example.com/users/evan&quot;,
+        &quot;object&quot;: {
+          &quot;id&quot;: &quot;https://example.com/notes/1234&quot;,
+          &quot;type&quot;: &quot;Note&quot;,
+          &quot;attributedTo&quot;: &quot;https://example.com/users/franklin&quot;
+        },
+        &quot;content&quot;: &quot;&lt;a href='https://example.com/users/jeff'&gt;@jeff&lt;/a&gt; you might like this Cretan geology article.&quot;,
+        &quot;tag&quot;: {
+          &quot;type&quot;: &quot;Mention&quot;,
+          &quot;href&quot;: &quot;https://example.com/users/jeff&quot;,
+          &quot;name&quot;: &quot;jeff&quot;
+        },
+        &quot;inReplyTo&quot;: &quot;https://example.com/activities/rrrsssttt&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+<h2 id="_10">ユーザーインターフェースのガイダンス</h2>
+<p>引用投稿の一般的な表現は、<code>Announce</code> の <code>object</code> を埋め込みカードまたは他の表現として含め、<code>Announce</code> オブジェクトの <code>content</code> を導入テキストとして使用することです。</p>
+<p><img alt="マイクロブログインターフェースでの引用投稿の例" src="quote-post.png" /></p>
+<h2 id="_11">セキュリティに関する考慮事項</h2>
+<p>すべての <code>Announce</code> アクティビティにおいて、共有コンテンツのどの程度を <code>Announce</code> アクティビティの受信者に公開するかを考慮することが重要です。URL を参照として使用したり、この FEP の例のように限られたメタデータを含めたりすることで、共有コンテンツの公開サーバーがコンテンツへのアクセスを制御できるようになります。詳細については、<a href="https://www.w3.org/wiki/ActivityPub/Primer">ActivityPub Primer</a> の <a href="https://www.w3.org/wiki/ActivityPub/Primer/Announce_activity#Inclusion_of_the_shared_object">共有オブジェクトの包含（Inclusion of the shared object）</a> を参照してください。</p>
+<h2 id="_12">プライバシーに関する考慮事項</h2>
+<h3 id="_13">共有されることへの同意</h3>
+<p>引用されたコンテンツの作成者は、<code>shares</code> コレクションを使用して、引用されることへの同意を示すことができます。作成者が引用されることに同意する場合、引用投稿を <code>shares</code> コレクションに追加できます。同意しない場合、引用投稿を省略するか、削除できます。</p>
+<p>サーバーは、作成者が <code>shares</code> コレクションに追加したり削除したりできる機能（affordances）を提供するべきです（SHOULD）。サーバーは、元の作者が明示的に追加しない限り <code>Announce</code> アクティビティが <code>shares</code> コレクションに追加されないオプトイン同意を提供しても構いません（MAY）。サーバーは、<code>Announce</code> アクティビティが受信時に自動的に <code>shares</code> コレクションに追加されるが、元の作者によって削除できるオプトアウト同意を提供しても構いません（MAY）。</p>
+<p>引用投稿の消費者は、発行者が同意を表明しているかどうかを判断するために、いつでも <code>shares</code> コレクションを参照できます。同意はいつでも延長または撤回できます。</p>
+<p>消費者は、元の作者が引用投稿に同意しているかどうかを示すべきです（SHOULD）。また、元の作者の同意がない引用投稿を不明瞭にしたり、非表示にしたりしても構いません（MAY）。</p>
+<h2 id="_14">参照</h2>
+<ul>
+<li>James Snell, Evan Prodromou, et al. <a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0</a>. W3C勧告。2018年5月8日。</li>
+<li>James Snell, Evan Prodromou, et al. <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Streams Vocabulary</a>. W3C勧告。2018年5月8日。</li>
+<li>Christine Lemmer-Webber, Jessica Tallon, et al. <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>. W3C勧告。2018年1月23日。</li>
+<li>Evan Prodromou. <a href="https://swicg.github.io/miscellany/">ActivityPub Miscellaneous Terms</a>. W3Cソーシャルウェブコミュニティグループドラフトレポート。2024年10月3日。</li>
+<li>W3Cメンバーおよび貢献者。<a href="https://www.w3.org/wiki/ActivityPub/Primer">ActivityPub Primer</a>. W3C Wiki. 2023年以降。</li>
+</ul>
+<h2 id="_15">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリックドメイン献呈</p>
+<p>法律で許される限り、このFediverse Enhancement Proposalの著者は、この著作物に対するすべての著作権および関連する権利または隣接する権利を放棄しました。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../d556/" class="btn btn-neutral float-left" title="FEP-d556: WebFinger を用いたサーバーレベルのアクター発見"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../e232/" class="btn btn-neutral float-right" title="FEP-e232: オブジェクトリンク">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../d556/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../e232/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

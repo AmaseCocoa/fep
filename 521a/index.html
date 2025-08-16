@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-521a: アクターの公開鍵の表現 - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-521a: \u30a2\u30af\u30bf\u30fc\u306e\u516c\u958b\u9375\u306e\u8868\u73fe";
+        var mkdocs_page_input_path = "521a/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-521a: アクターの公開鍵の表現</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">要約</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">根拠</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">要件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multikey">Multikey</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#id">鍵のID</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">鍵のタイプ</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">アクターオブジェクトへの鍵の追加</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">テストベクトル</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../a4ed/">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c16b/">FEP-c16b: MFM関数のフォーマット</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../d556/">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dd4b/">FEP-dd4b: 引用投稿</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">521a</li>
+      <li class="breadcrumb-item active">FEP-521a: アクターの公開鍵の表現</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/521a/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-521a">FEP-521a: アクターの公開鍵の表現</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025年08月16日 23時15分</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">要約</h2>
+<p>この提案は、<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> アクターに関連付けられた公開鍵をどのように表現するかを記述します。</p>
+<h2 id="_2">根拠</h2>
+<p>歴史的に、Fediverse サービスはアクターの公開鍵を表現するために <a href="https://w3c-ccg.github.io/security-vocab/#publicKey">publicKey</a> プロパティを使用していました。実装では通常、アクターごとに1つの鍵しか許可されていないため、追加の鍵が必要なユースケースをサポートするために新しいアプローチが必要です。</p>
+<p>さらに、<code>publicKey</code> プロパティは非推奨と見なされており、<a href="https://www.w3.org/2025/credentials/vcdi/vocab/v2/vocabulary.html">Security Vocabulary</a> の最新バージョンには存在しません。</p>
+<h2 id="_3">要件</h2>
+<p>この文書におけるキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」は、<a href="https://datatracker.ietf.org/doc/html/rfc2119.html">RFC-2119</a> で記述されている通りに解釈されます。</p>
+<h2 id="multikey">Multikey</h2>
+<p>各公開鍵は、<a href="https://www.w3.org/TR/cid-1.0/#Multikey">Controlled Identifiers</a> 仕様の <em>2.2.2 Multikey</em> セクションで定義されているように、<code>Multikey</code> 型のオブジェクトとして表現されなければなりません（MUST）。このオブジェクトは以下のプロパティを持たなければなりません（MUST）：</p>
+<ul>
+<li><code>id</code>: 公開鍵の一意なグローバル識別子。</li>
+<li><code>type</code>: このプロパティの値は文字列 <code>Multikey</code> でなければなりません（MUST）。</li>
+<li><code>controller</code>: このプロパティの値はアクター ID と一致しなければなりません（MUST）。</li>
+<li><code>publicKeyMultibase</code>: <a href="https://github.com/multiformats/multicodec/">Multicodec</a> プレフィックスと公開鍵の <a href="https://www.w3.org/TR/cid-1.0/#multibase-0">Multibase</a> エンコードされた値。実装は <code>base-58-btc</code> アルファベットを使用しなければなりません（MUST）。</li>
+</ul>
+<h3 id="id">鍵のID</h3>
+<p>鍵の識別子は絶対 <a href="https://datatracker.ietf.org/doc/html/rfc3986">URI</a> でなければなりません（MUST）。</p>
+<p>識別子は、アクター ID にフラグメント識別子を付加することによって生成されるべきです（SHOULD）。これにより、コンシューマは単一の HTTP リクエストでアクターオブジェクトと関連する鍵の両方を取得できます。アクターの鍵がフラグメント識別子を使用して識別される場合、各鍵は一意のフラグメント識別子を持たなければなりません（MUST）。</p>
+<p>フラグメント識別子を含む URI の解決は、<a href="https://www.w3.org/TR/cid-1.0/#fragment-resolution">Controlled Identifiers</a> 仕様の <em>3.4 Fragment Resolution</em> セクションで指定されたアルゴリズムを使用して実行されます。</p>
+<h3 id="_4">鍵のタイプ</h3>
+<p>実装者は、<a href="https://github.com/multiformats/multicodec/">Multicodec</a> プレフィックスが登録されている任意のタイプの暗号鍵を使用できます。</p>
+<h2 id="_5">アクターオブジェクトへの鍵の追加</h2>
+<p><code>Multikey</code> オブジェクトは、<a href="https://www.w3.org/TR/cid-1.0/">Controlled Identifiers</a> 仕様で記述されているように、制御された識別子ドキュメントと見なされるアクターオブジェクトに追加されます。</p>
+<p>鍵が ActivityPub オブジェクトの署名に使用されることを意図している場合、それはアクターオブジェクト内の <a href="https://www.w3.org/TR/cid-1.0/#assertion"><code>assertionMethod</code></a> 配列に追加されなければなりません（MUST）。</p>
+<p>その他のユースケースは、この提案の範囲外です。</p>
+<p>実装は、この仕様に準拠しないオブジェクトを <code>assertionMethod</code> 配列に追加することを推奨しません（discouraged）。<code>assertionMethod</code> 配列内で不適合なエントリに遭遇した実装は、それらを無視すべきです（SHOULD）。</p>
+<p>アクターは関連する公開鍵を持たないこともあります（MAY）。</p>
+<h3 id="_6">例</h3>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://www.w3.org/ns/cid/v1&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;id&quot;: &quot;https://server.example/users/alice&quot;,
+    &quot;inbox&quot;: &quot;https://server.example/users/alice/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://server.example/users/alice/outbox&quot;,
+    &quot;assertionMethod&quot;: [
+        {
+            &quot;id&quot;: &quot;https://server.example/users/alice#ed25519-key&quot;,
+            &quot;type&quot;: &quot;Multikey&quot;,
+            &quot;controller&quot;: &quot;https://server.example/users/alice&quot;,
+            &quot;publicKeyMultibase&quot;: &quot;z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2&quot;
+        }
+    ]
+}
+</code></pre>
+<h2 id="_7">テストベクトル</h2>
+<p><a href="fep-521a.feature">fep-521a.feature</a> を参照してください。</p>
+<h2 id="_8">実装</h2>
+<ul>
+<li>Mitra</li>
+<li>streams</li>
+<li>Hubzilla</li>
+<li><a href="https://github.com/fedify-dev/fedify/blob/1.7.5/FEDERATION.md#supported-feps">Fedify</a></li>
+<li><a href="https://github.com/dimkr/tootik/blob/0.18.0/FEDERATION.md#http-signatures">tootik</a></li>
+</ul>
+<h2 id="_9">参考文献</h2>
+<ul>
+<li>Christine Lemmer-Webber, Jessica Tallon, Erin Shepherd, Amy Guy, Evan Prodromou, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>Ivan Herman, Manu Sporny, Dave Longley, <a href="https://www.w3.org/2025/credentials/vcdi/vocab/v2/vocabulary.html">Security Vocabulary</a>, 2023</li>
+<li>S. Bradner, <a href="https://datatracker.ietf.org/doc/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+<li>Dave Longley, Manu Sporny, Markus Sabadello, Drummond Reed, Orie Steele, Christopher Allen, <a href="https://www.w3.org/TR/cid-1.0/">Controlled Identifiers v1.0</a>, 2025</li>
+<li>Protocol Labs, <a href="https://github.com/multiformats/multicodec/">Multicodec</a></li>
+<li>T. Berners-Lee, R. Fielding, L. Masinter, <a href="https://datatracker.ietf.org/doc/html/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>, 2005</li>
+</ul>
+<h2 id="_10">著作権</h2>
+<p>CC0 1.0 Universal (CC0 1.0) パブリックドメイン献呈</p>
+<p>法律で許される限りにおいて、この Fediverse 改善提案の著者は、この著作物に対するすべての著作権および関連する権利または隣接する権利を放棄しました。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Fediverse 機能強化提案"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="fep-521a-test-case/" class="btn btn-neutral float-right" title="Actor Objects must express signing key as assertionMethod Multikey">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="fep-521a-test-case/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

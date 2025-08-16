@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-c16b: MFM関数のフォーマット - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-c16b: MFM\u95a2\u6570\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8";
+        var mkdocs_page_input_path = "c16b/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/">FEP-521a: アクターの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../a4ed/">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-c16b: MFM関数のフォーマット</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">要件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">謝辞</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">経緯</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfm">MFM関数</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfmhtml">MFM関数のHTML表現</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfm_1">その他のMFMコンポーネント</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">発見</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#htmlmfm">htmlMfm</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">参照</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">著作権</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../d556/">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dd4b/">FEP-dd4b: 引用投稿</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">C16b</li>
+      <li class="breadcrumb-item active">FEP-c16b: MFM関数のフォーマット</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/c16b/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-c16b-mfm">FEP-c16b: MFM関数のフォーマット</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025-08-17</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/c16b/fep-c16b.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p>このFEPは、カスタムクラスと[data-<em> 属性 (data-</em> attributes)]を持つHTMLを使用して、ActivityPubの投稿コンテンツ内のMFMをフォーマットする方法を推奨します。さらに、このFEPは、このHTML表現が使用されていることを示す新しい拡張用語を提供します。</p>
+<h2 id="_2">要件</h2>
+<p>この文書におけるキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」は、[RFC-2119]で記述されている通りに解釈されるものとします。</p>
+<p>「Fediverse実装」または「実装」は、[ActivityPub]で記述されているActivityPub準拠クライアント、ActivityPub準拠サーバー、またはActivityPub準拠連合サーバーとして解釈されるものとします。</p>
+<h2 id="_3">謝辞</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>このFEPの核となるアイデアは、Foundkeyの課題トラッカー[1]のJohan150に帰属します。具体的には、カスタムクラスと<code>data-*</code>属性を持つ<code>span</code>要素を使用して、HTMLでMFM関数を表現するという提案です。</p>
+<h2 id="_4">経緯</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>Fediverseの実装では、テキストの入力としてマークアップ言語を許可するのが一般的です。このコンテンツの連合は、通常、このテキスト入力を、他の実装が容易に理解できる適切なHTML表現に変換することによって行われます。このHTML表現は、[ActivityStreams]オブジェクトの<code>content</code>プロパティを使用してActivityPub上で連合されます。一方、ActivityPubによって追加された<code>source</code>プロパティは、オプションで元の入力と入力形式を提供するために使用できます。</p>
+<p>Misskeyは、MFM（[Markup language For Misskey]）として知られる独自のマークアップ言語を使用しています。MFMは、主にHTML、Markdown、Katex、および<code>$[name content]</code>形式のカスタムMFM関数の組み合わせで構成されています。これらのMFM関数が意図するものを適切に表示するには、一般的に複雑なCSSやJavaScriptが必要です。そのため、<code>content</code>には簡略化されたHTML表現のみが提供されます。この表現は、受信側の実装が著者の意図を常に適切に表示できないほど多くの情報を削除してしまう可能性があります。MFMを正しく表示したい受信側の実装にとって唯一の選択肢は、<code>source</code>プロパティの<code>mediaType</code>が<code>text/x.misskeymarkdown</code>の値を持つ場合に、その<code>source</code>プロパティの<code>content</code>を再解析することです。これは、不必要なオーバーヘッドを引き起こすだけでなく、特に2つの実装が異なるパーサーを使用している場合に、互換性の問題も引き起こします。</p>
+<h2 id="mfm">MFM関数</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>MFM関数は、名前、オプションで1つ以上の属性（値を持つ場合と持たない場合がある）、およびコンテンツで構成されます。その形式は<code>$[name.attribute1,attribute2=value content]</code>です。</p>
+<h3 id="_5">例</h3>
+<p>(このセクションは非規範的です。)</p>
+<pre><code>$[x2 Misskey expands the world of the Fediverse]
+$[jelly.speed=2s Misskey expands the world of the Fediverse]
+$[spin.x,speed=0.5s Misskey expands the world of the Fediverse]
+</code></pre>
+<h2 id="mfmhtml">MFM関数のHTML表現</h2>
+<p>MFM関数をHTMLで表現する場合、<code>span</code>要素を使用しなければなりません（MUST）。<code>span</code>要素は、<code>name</code>がMFM関数の名前である<code>mfm-name</code>というクラスを持たなければなりません（MUST）。MFM関数が属性を持つ場合、<code>span</code>要素は、各属性に対して<code>data-mfm-attributename</code>という<code>data-*</code>属性を持たなければなりません（MUST）。ここで<code>attributename</code>は当該属性の名前です。MFM関数の属性が値を持つ場合、<code>data-*</code>属性は同じ値を持たなければなりません（MUST）。</p>
+<h3 id="_6">例</h3>
+<p>(このセクションは非規範的です。)</p>
+<p>これにより、以前の例は以下のように変換されます。</p>
+<pre><code>&lt;span class=&quot;mfm-x2&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+&lt;span class=&quot;mfm-jelly&quot; data-mfm-speed=&quot;2s&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+&lt;span class=&quot;mfm-flip&quot; data-mfm-x data-mfm-speed=&quot;0.5s&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+</code></pre>
+<h2 id="mfm_1">その他のMFMコンポーネント</h2>
+<p>このFEPはMFM関数の表現に焦点を当てていますが、MFMはこれらのMFM関数だけから構成されているわけではありません。<code>content</code>プロパティ内のHTML表現は、受信側の実装がMFMが伝える内容を正しく表示できるように、正確かつ完全でなければなりません（MUST）。</p>
+<p>HTMLとMarkdownは通常、<code>content</code>プロパティで正しく表現されており、どちらもFediverseで広く使用されています。そのため、これらはMFM関数と同じ意味で問題があるとは見なされません。</p>
+<p>Katexも同様に、通常<code>content</code>プロパティで適切に表現されないという問題を抱えています。Katex入力をHTMLとして適切に表現するには、[FEP-dc88]を使用すべきです（SHOULD）。</p>
+<h2 id="_7">発見</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>MFM対応ではあるがFEP-c16bに準拠していない実装との互換性が必要な場合、<code>source</code>は引き続き<code>"mediaType": "text/x.misskeymarkdown"</code>を使用して連合される必要があるかもしれません。一方、この実装からの受信<code>source</code>は、引き続き再解析が必要となる場合があります。そのため、FEP-c16b準拠の実装に対して、<code>content</code>を直接使用できることを通知するための発見メカニズムが必要です。</p>
+<p>この目的のために、[FEP-888d]で記述されているように、新しい拡張用語が提案されています。</p>
+<h3 id="htmlmfm">htmlMfm</h3>
+<p><code>content</code>がFEP-c16bに準拠していることを示すために、実装は<code>htmlMfm</code>という拡張用語を値<code>true</code>とともに使用してもよい（MAY）。<code>content</code>がFEP-c16bに準拠していない場合、実装は<code>htmlMfm</code>という拡張用語を値<code>true</code>とともに使用してはなりません（MUST NOT）が、値<code>false</code>とともに使用してもよい（MAY）。</p>
+<ul>
+<li>説明: <code>content</code>がFEP-c16bに準拠していることを示すフラグ。</li>
+<li>URI: <code>https://w3id.org/fep/c16b#htmlMfm</code></li></li>
+<li>ドメイン: <code>https://www.w3.org/ns/activitystreams#Object</code></li></li>
+<li>範囲: Boolean</li></li>
+</ul>
+<h2 id="_8">例</h2>
+<p>(このセクションは非規範的です。)</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        {
+            &quot;htmlMfm&quot;: &quot;https://w3id.org/fep/c16b#htmlMfm&quot;
+        }
+    ],
+    &quot;content&quot;: &quot;&lt;span class=\&quot;mfm-spin\&quot; data-mfm-x data-mfm-speed=\&quot;0.5s\&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;&quot;,
+    &quot;source&quot;: {
+        &quot;content&quot;: &quot;$[spin.x,speed=0.5s Misskey expands the world of the Fediverse]&quot;,
+        &quot;mediaType&quot;: &quot;text/x.misskeymarkdown&quot;
+    },
+    &quot;htmlMfm&quot;: true
+}
+</code></pre>
+<h2 id="_9">実装</h2>
+<ul>
+<li><a href="https://akkoma.dev/AkkomaGang/akkoma/src/branch/stable/FEDERATION.md#supported-feps">Akkoma</a></li>
+</ul>
+<h2 id="_10">参照</h2>
+<ul>
+<li>[data-<em> 属性（data-</em> attributes）]: <a href="https://html.spec.whatwg.org/multipage/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes">HTML Living Standard</a>の一部</li>
+<li>[RFC-2119] S. Bradner, <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFCにおける要件レベルを示すためのキーワード</a>, 1997</li>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[1] Johan150, <a href="https://akkoma.dev/FoundKeyGang/FoundKey/issues/343#issuecomment-7344">HTMLを使用してコンテンツフィールドでMFMを連合する</a>, 2023</li>
+<li>[ActivityStreams] James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams 2.0</a>, 2017</li>
+<li>[Markup language For Misskey], <a href="https://misskey-hub.net/en/docs/for-users/features/mfm/">MFM</a></li>
+<li>[FEP-dc88] Calvin Lee, <a href="https://codeberg.org/ilja/fep/src/branch/main/fep/dc88/fep-dc88.md">FEP-dc88: 数学のフォーマット</a>, 2023</li>
+<li>[FEP-888d] a, <a href="https://codeberg.org/ilja/fep/src/branch/main/fep/888d/fep-888d.md">FEP-888d: FEP固有の名前空間のベースとしてhttps://w3id.org/fepを使用する</a>, 2023</li>
+</ul>
+<h2 id="_11">著作権</h2>
+<p>CC0 1.0 Universal (CC0 1.0) パブリックドメイン献呈</p>
+<p>法律で許される限りにおいて、このFediverse拡張提案の著者は、この著作物に関するすべての著作権および関連する権利または隣接する権利を放棄しました。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../c0e0/" class="btn btn-neutral float-left" title="FEP-c0e0: 絵文字リアクション"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../d556/" class="btn btn-neutral float-right" title="FEP-d556: WebFinger を用いたサーバーレベルのアクター発見">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../c0e0/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../d556/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

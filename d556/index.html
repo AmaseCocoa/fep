@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-d556: WebFinger を用いたサーバーレベルのアクター発見 - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-d556: WebFinger \u3092\u7528\u3044\u305f\u30b5\u30fc\u30d0\u30fc\u30ec\u30d9\u30eb\u306e\u30a2\u30af\u30bf\u30fc\u767a\u898b";
+        var mkdocs_page_input_path = "d556/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/">FEP-521a: アクターの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../a4ed/">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c16b/">FEP-c16b: MFM関数のフォーマット</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">用語</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">ユースケース</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">発見</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">単一アクターサーバー</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dd4b/">FEP-dd4b: 引用投稿</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">D556</li>
+      <li class="breadcrumb-item active">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/d556/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-d556-webfinger">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025年08月16日 23時16分</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/d556/fep-d556.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p>サーバーレベルの <a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a> アクターは、ユーザーやそのソフトウェア相当物（<em>ボット</em>と呼ばれることもある）を表すのではなく、サーバー全体の機能をサポートします。この提案は、<a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> を使用してサーバーレベルのアクターの URI を発見する方法を記述します。</p>
+<h2 id="_2">用語</h2>
+<p><em>サーバー</em>という用語は明確に定義されていません。この文書の目的のために、サーバーとは同じ URL プレフィックス（スキーム、ホスト、ポート）を持つ <em>オリジン</em> <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" title="同一オリジンポリシーは、あるオリジンによってロードされたドキュメントやスクリプトが、別のオリジンからのリソースとどのように相互作用できるかを制限する重要なセキュリティメカニズムです。">SameOriginPolicy</a> です。この用語は、ネットワークやソフトウェアアーキテクチャについて何も示唆しません。サーバーは、ロードバランシングリバースプロキシの背後にある多数のサーバープロセスで構成されることもあります。あるいは逆に、単一のサーバープロセスが多数のサーバーをホストすることもできます（マルチテナントアーキテクチャ）。</p>
+<p>一部の実装では、異なるサーバーレベルの役割（モデレーション、管理など）をサポートするために複数のアクターを持つことができます。この文書では、これらの種類のアクターを記述するために <em>サーバーレベルのアクター</em> という用語が使用されます。<em>サーバーアクター</em> または <em>アプリケーションアクター</em> という用語は、単一のサーバーレベルのアクターが存在する特殊だが一般的なケースです。</p>
+<p><em>サーバー</em>という用語は、<a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub Recommendation</a> で広範に使用されていますが、サーバーが処理できるアクティビティ以外はほとんど定義されていません。この用語は、Mastodon が <em>インスタンス</em> という言葉を使用する方法と密接に関連していますが、これはオンラインでの議論でこの言葉が使用される唯一の方法ではありません。</p>
+<blockquote>
+<p>注：サーバーレベルのアクターの標準的な役割と責任は、ここ（またはこの提出時点では他の場所）では定義されていません。いくつかの実装にはインスタンスアクターまたはアプリケーションアクターと呼ばれるものがありますが、現時点では標準的な動作が定義されていないため、相互運用可能である場合とそうでない場合があります。</p>
+</blockquote>
+<h2 id="_3">ユースケース</h2>
+<p>この FEP はサーバーレベルのアクターの具体的な使用法を定義していませんが、それらが実際にどのように使用されているか、または使用されうるかを知ることは有用です。以下にいくつかの潜在的なユースケースを示します。</p>
+<ul>
+<li>
+<p><strong>フェッチリクエストの署名:</strong> これが最も一般的なユースケースであると思われます。これに必要なのは、HTTP署名（つまり「承認済みフェッチ」）を要求することでアクタープロファイルへのアクセスを制限することと、アクタープロファイルを公開鍵と密接に結合することの組み合わせです。これにより、プロファイル/鍵のフェッチループが発生します (<a href="https://seb.jambor.dev/posts/understanding-activitypub-part-4-threads/#the-instance-actor" title="この記事は、承認済みフェッチループのいくつかのリクエストシーケンスを文書化しています。この記事は、この動作を誤って ActivityPub と関連付けていますが、これは主に Mastodon の実装設計に基づいた ActivityPub ではない特異な動作です。">InstanceActor</a>)。この望ましくない動作を軽減するための一つの手法は、サードパーティのアクター（しばしば「インスタンスアクター」と呼ばれる）にすべてのフェッチリクエストに署名させることです。このユースケースではアクターの発見は必須ではありませんが、<a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> の動機となるユースケースであるように見えるため、ここで言及されています。これは本提案といくつかの類似点があります。</p>
+</li>
+<li>
+<p><strong>リレーサポート:</strong> サーバーレベルのアクターは、リレーへの購読（しばしば <a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a> の <code>Follow</code> リクエストを使用）や <code>inbox</code> メッセージの受信に使用できます。</p>
+</li>
+<li>
+<p><strong>サーバーレベルの購読:</strong> <a href="https://pleroma.social/" title="Pleroma は、同じ連合標準（OStatus および ActivityPub）をサポートする他のサーバーと連合（つまりメッセージを交換）できるマイクロブログサーバーソフトウェアです。">Pleroma</a> のような一部の実装では、「インスタンス」からの<a href="https://github.com/mastodon/mastodon/issues/10453" title="Mastodon にインスタンス全体のアクターを追加することに関連する元の GitHub イシュー。">すべてのメッセージを受信</a>するためにフォローできるアクターを提供しています。</p>
+</li>
+<li>
+<p><strong>モデレーション:</strong> サーバーレベルのアクターは、モデレーション関連のコンテンツ（アクターまたはドメインのブロック、投稿フラグなど）を連合（フェデレート）したり、アクションを実行するモデレーターの身元を隠すための公開プロキシを提供したりするために使用できます。</p>
+</li>
+<li>
+<p><strong>アナウンス:</strong> サーバーレベルのアクターは、サーバーの公開ニュースに使用できます。例えば、新機能、メンテナンススケジュール、更新に関するアナウンスを含むコンテンツを公開できます。</p>
+</li>
+<li>
+<p><strong>オブジェクトの帰属:</strong> 一部のサーバー実装では、一部のオブジェクトを個々のユーザーやアカウントではなく、サーバーに帰属させることができます。</p>
+</li>
+<li>
+<p><strong>管理:</strong> サーバーレベルのアクターは、ソフトウェアの問題（ユーザーからの報告を含む）、利用可能な更新、セキュリティの脆弱性とその軽減策に関する情報を共有するために使用できます。</p>
+</li>
+</ul>
+<h2 id="_4">発見</h2>
+<p>サーバーレベルのアクターの URI を発見するには、サーバープレフィックスをリソースクエリパラメータとして <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> にクエリします。</p>
+<p>リクエスト例:</p>
+<pre><code>GET /.well-known/webfinger?resource=https://server.example/
+</code></pre>
+<p>レスポンス:</p>
+<pre><code class="language-json">{
+    &quot;subject&quot;: &quot;https://server.example/&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;rel&quot;: &quot;https://www.w3.org/ns/activitystreams#Service&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/actor&quot;
+        }
+    ]
+}
+</code></pre>
+<p><code>subject</code> は通常、リソース URI になります。この提案は <code>subject</code> の特定の URI に依存しませんが、ActivityPub アクター URI が推奨されます。</p>
+<p>サーバーレベルのアクターの URI は、<code>rel</code>（リレーションタイプ）プロパティが <code>https://www.w3.org/ns/activitystreams#Service</code> である <code>link</code> の <code>href</code> プロパティになります（<a href="https://www.w3.org/wiki/Activity_Streams/Primer/Service_type" title="Service タイプに関する W3C AS2 Primer">W3C AS2 Service Primer</a>）。サーバーレベルのアクター自体のタイプは、リレーションタイプと同じである必要はありません。</p>
+<p>単一アクターサーバーにおいて、サーバーレベルのアクターとユーザーのアクターとの間に曖昧さがない場合、<code>https://www.w3.org/ns/activitystreams#Service</code> の <code>rel</code> 値は <code>self</code> に置き換えられることがあります（<a href="#単一アクターサーバー">単一アクターサーバー</a>の議論を参照）。</p>
+<p><code>http://webfinger.net/rel/profile-page</code> の <code>rel</code> (<a href="https://webfinger.net/rel" title="webfinger.net で定義されている WebFinger リンクリレーション">WebFinger Relations</a>) は、サーバーのメタデータ（複数のコンテンツタイプを持つ可能性あり）へのリンクに使用できます。ただし、ターゲットとなるメタデータの構造は現時点では定義されていません。例えば、以下のリンクは HTML および JSON-LD 形式のプロファイルデータを参照しています。</p>
+<pre><code class="language-json">{
+    &quot;subject&quot;: &quot;https://server.example/&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;rel&quot;: &quot;https://www.w3.org/ns/activitystreams#Service&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/actor&quot;
+        },
+        {
+            &quot;rel&quot;: &quot;http://webfinger.net/rel/profile-page&quot;,
+            &quot;type&quot;: &quot;text/html&quot;,
+            &quot;href&quot;: &quot;https://server.example/profile&quot;
+        },
+        {
+            &quot;rel&quot;: &quot;http://webfinger.net/rel/profile-page&quot;,
+            &quot;type&quot;: &quot;application/ld+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/profile&quot;
+        }
+    ]
+}
+</code></pre>
+<p>複数のサーバーレベルのアクターリンクが返された場合、標準の <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> プロパティを使用してリンクにメタデータを追加することで、リンクを明確に区別できます。例えば、実装によっては異なる目的を果たす異なるサーバーレベルのアクターを持つことができます。</p>
+<p>また、別の FEP が一般的な役割のための標準的な <code>rel</code> URI を定義する可能性もあります。その場合、それらの FEP の役割 URI が優先されるべきです（SHOULD）。</p>
+<blockquote>
+<p>注：標準的なサーバーレベルのアクターの役割の定義は、この FEP の範囲外です。</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;subject&quot;: &quot;https://server.example/&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;rel&quot;: &quot;https://www.w3.org/ns/activitystreams#Service&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/actor&quot;,
+            &quot;properties&quot;: {
+              &quot;http://schema.org/roleName&quot;: &quot;administration&quot;
+            }
+        },
+        {
+            &quot;rel&quot;: &quot;https://www.w3.org/ns/activitystreams#Service&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/actor&quot;,
+            &quot;properties&quot;: {
+              &quot;http://schema.org/roleName&quot;: &quot;moderation&quot;
+            }
+        }
+    ]
+}
+</code></pre>
+<p>この例では、同じアクターが管理とモデレーションに使用されています。しかし、アクターが異なる場合でもこの例は有効です。一部のユースケースでは、役割がさらに細分化される可能性があります。例えば、追加のプロパティが役割の地理的地域を指定するかもしれません。</p>
+<h2 id="_5"><a id="single-actor-servers"></a> 単一アクターサーバー</h2>
+<p>単一アクター（ユーザーアクター）サーバーの開発者は、サーバーレベルのアクターとして意図されていないにもかかわらず、そのユーザーがサーバープレフィックスに対応する URI を持つことを望むかもしれません。このシナリオは一般的であるとは予想されませんが、<a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> レスポンスで複数のリンクを返すことでサポートできます。</p>
+<pre><code class="language-json">{
+    &quot;subject&quot;: &quot;https://server.example/&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;rel&quot;: &quot;https://www.w3.org/ns/activitystreams#Service&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/server-actor&quot;
+        },
+        {
+            &quot;rel&quot;: &quot;self&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/user-actor&quot;
+        }
+    ]
+}
+</code></pre>
+<p>アプリケーションがサーバーアクターまたはユーザーアクターのみに特に関心がある場合、<a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> 仕様で説明されているように（<a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">Webfinger</a> サービス実装によってサポートされている場合）、<code>rel</code> クエリパラメータを使用してリンクをフィルタリングできます。</p>
+<p>例えば、ユーザーアクター URI のみをクエリするには、クエリは次のようになります。</p>
+<pre><code>GET /.well-known/webfinger?resource=https://server.example/&amp;rel=self
+</code></pre>
+<pre><code class="language-json">{
+    &quot;subject&quot;: &quot;https://server.example/&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;rel&quot;: &quot;self&quot;,
+            &quot;type&quot;: &quot;application/activity+json&quot;,
+            &quot;href&quot;: &quot;https://server.example/user-actor&quot;
+        }
+    ]
+}
+</code></pre>
+<h1 id="_6">実装</h1>
+<p>既知の実装には以下が含まれます。</p>
+<ul>
+<li>FIRM</li>
+<li><a href="https://joinmastodon.org/" title="セルフホスト型で、グローバルに相互接続されたマイクロブログソフトウェア">Mastodon</a> はこの提案と類似したものを実装しています。</li>
+<li>Streams</li>
+<li>Mitra</li>
+</ul>
+<h2 id="mastodon">Mastodon の例</h2>
+<pre><code>GET /.well-known/webfinger?resource=https://mastodon.social/
+Host: https://mastodon.social
+</code></pre>
+<p>または Mastodon のアカウントベース URI を使用する場合：</p>
+<pre><code>GET /.well-known/webfinger?resource=acct:mastodon.social@mastodon.social
+Host: https://mastodon.social
+</code></pre>
+<pre><code class="language-json">{
+  &quot;subject&quot;: &quot;acct:mastodon.social@mastodon.social&quot;,
+  &quot;aliases&quot;: [
+    &quot;https://mastodon.social/actor&quot;
+  ],
+  &quot;links&quot;: [
+    {
+      &quot;rel&quot;: &quot;http://webfinger.net/rel/profile-page&quot;,
+      &quot;type&quot;: &quot;text/html&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/about/more?instance_actor=true&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;self&quot;,
+      &quot;type&quot;: &quot;application/activity+json&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/actor&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;http://ostatus.org/schema/1.0/subscribe&quot;,
+      &quot;template&quot;: &quot;https://mastodon.social/authorize_interaction?uri={uri}&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Mastodon の実装とこの提案のいくつかの違いは以下の通りです。</p>
+<ul>
+<li>
+<p>標準の <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> の <code>rel</code> によるフィルタリングをサポートしていません。</p>
+</li>
+<li>
+<p><code>subject</code> は、推奨される <a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a> アクター URI ではなく、サーバーレベルのアクターに対する Mastodon 固有のアカウント URI です。</p>
+</li>
+</ul>
+<p>サーバーリソースに対してユーザー関連のアクターリンクが提供されていないため、<code>self</code> の <code>rel</code> 値は曖昧さなく使用できます。</p>
+<h2 id="_7">関連する提案</h2>
+<p><a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> は、同様の目的で <a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo</a> を使用することを提案しています。<a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> を使用する場合と比較して、いくつかの欠点があります。</p>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> は <a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a> Recommendation によって必須ではありませんが、ほとんどの ActivityPub ベースの実装（例：Mastodon および互換性のある実装）との連合（フェデレーション）には必須です。<a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo</a> は連合に必須ではないため、この目的での使用を要求すると、何のメリットもなく連合の複雑さが増します。</li>
+<li><a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> は Internet Engineering Task Force (IETF) によって標準化されています。<a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo</a> は非公式に定義されています。</li>
+<li><a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> は、リソース識別子を解決し、サーバーレベルのメタデータ（例：プロファイルページの URL）へのリンクを提供するために既に使用されています。<a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo</a> は主にサーバーメタデータの収集と集約に使用されます。</li>
+<li><a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> は、新しい非標準の <code>rel</code> リレーションを <a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo</a> インデックスドキュメントに追加します。これは、一部の利用側実装に予期せぬ影響を与える可能性があります。この提案は、標準的な方法で <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> を使用しています。</li>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary" title="この仕様は Activity 語彙を記述しています。ActivityStreams 2.0 形式のコンテキストで使用されることを意図しており、アクティビティ構造と特定のアクティビティタイプのための基礎的な語彙を提供します。">ActivityVocabulary</a> アクタータイプが WebFinger の <code>rel</code> 値に使用されていることを考えると、W3C ActivityStreams Primers がこの種のリソースに対して推奨するタイプは <code>as:Application</code> (<a href="https://www.w3.org/wiki/Activity_Streams/Primer/Application_type" title="Application タイプに関する W3C AS2 Primer">Primer</a>) ではなく <code>as:Service</code> (<a href="https://www.w3.org/wiki/Activity_Streams/Primer/Service_type" title="Service タイプに関する W3C AS2 Primer">Primer</a>) です。（これは WebFinger からリンクされるサーバーレベルのアクターリソースで指定されるタイプとは異なることに注意してください。）</li>
+<li><a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> は単一のサーバーレベルアクターのみを定義しています。この提案はそのユースケースを許可しますが、高度な実装に対してより柔軟性があります。</li>
+<li><a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> はアクターが <code>as:Application</code> タイプを持つことを要求します。この提案はアクタータイプに制約を設けません。<code>as:Service</code> URI はリンクのリレーションタイプにのみ使用されます。</li>
+</ul>
+<p>定義は明確ではありませんが、<a href="../2677/fep-2677.md" title="FEP-2677: アプリケーションアクターの識別">FEP-2677</a> の「アプリケーションアクター」は、ソフトウェアの「アプリケーション」（定義されていませんが、この提案における「サーバー」と類似の概念のようです）のプロキシであるように見えます。例えば、アプリケーションのメタデータをアクターに付加することについての議論があります。この提案では、サーバープロキシアクターは存在しません（ただし、禁止されているわけではありません）。リンクされたサーバーレベルのサービスアクターを持つサーバー WebFinger リソースは存在しますが、サーバーリソース自体が必ずしもアクターであるとは限りません。</p>
+<p><a href="../2c59/fep-2c59.md" title="FEP-2c59: ActivityPub アクターからの Webfinger アドレスの発見">FEP-2c59</a> は、<a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a> アクターリソースから <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a> リソース URI を発見する方法について議論しています。これはサーバーレベルのアクター発見とは関係ありません。</p>
+<p><a href="../4adb/fep-4adb.md" title="FEP-4adb: Webfinger を用いた識別子の逆参照">FEP-4adb</a> は、WebFinger を用いた識別子の逆参照について議論しています。これはこの提案と類似していますが、サーバーレベルのアクターの発見に特に関連するものではありません。</p>
+<h2 id="_8">参照</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/" title="ActivityPub プロトコルは、ActivityStreams 2.0 データ形式に基づいた分散型ソーシャルネットワーキングプロトコルです。コンテンツの作成、更新、削除のためのクライアントからサーバーへの API と、通知およびコンテンツを配信するための連合型サーバーからサーバーへの API を提供します。">ActivityPub</a>, 2018</li>
+<li>James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary" title="この仕様は Activity 語彙を記述しています。ActivityStreams 2.0 形式のコンテキストで使用されることを意図しており、アクティビティ構造と特定のアクティビティタイプのための基礎的な語彙を提供します。">ActivityStreams Vocabulary</a>, 2017</li>
+<li>W3C ActivityStreams Primer - <a href="https://www.w3.org/wiki/Activity_Streams/Primer/Application_type" title="Application タイプに関する W3C AS2 Primer">Application type</a></li>
+<li>W3C ActivityStreams Primer - <a href="https://www.w3.org/wiki/Activity_Streams/Primer/Service_type" title="Service タイプに関する W3C AS2 Primer">Service type</a></li>
+<li>Eugen Rochko, <a href="https://joinmastodon.org/" title="セルフホスト型で、グローバルに相互接続されたマイクロブログソフトウェア">Mastodon</a>, 2016</li>
+<li>Jonne Haß, <a href="http://nodeinfo.diaspora.software/protocol.html" title="NodeInfo は、分散型ソーシャルネットワークのインストールに関するメタデータを公開するための標準化された方法を定義します。">NodeInfo 2.1</a></li>
+<li>MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" title="同一オリジンポリシーは、あるオリジンによってロードされたドキュメントやスクリプトが、別のオリジンからのリソースとどのように相互作用できるかを制限する重要なセキュリティメカニズムです。">Same-origin Policy</a></li>
+<li>Brad Fitzpatrick, <a href="https://tools.ietf.org/html/rfc7033" title="標準的な HTTP メソッドを使用してインターネット上の人物やその他のエンティティに関する情報を発見するためのプロトコル">WebFinger</a>, 2013</li>
+<li>WebFinger.net <a href="https://webfinger.net/rel" title="webfinger.net で定義されている WebFinger リンクリレーション">Link Relations</a></li>
+</ul>
+<h2 id="_9">著作権</h2>
+<p>CC0 1.0 Universal (CC0 1.0) パブリックドメイン献呈</p>
+<p>法的に可能な限り、この Fediverse Enhancement Proposal の著者は、この著作物に関するすべての著作権および関連する権利または隣接する権利を放棄しました。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../c16b/" class="btn btn-neutral float-left" title="FEP-c16b: MFM関数のフォーマット"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dd4b/" class="btn btn-neutral float-right" title="FEP-dd4b: 引用投稿">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../c16b/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dd4b/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

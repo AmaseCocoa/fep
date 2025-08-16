@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-67ff: FEDERATION.md - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-67ff: FEDERATION.md";
+        var mkdocs_page_input_path = "67ff/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/">FEP-521a: アクターの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-67ff: FEDERATION.md</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">要件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">構造</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">テンプレート</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">実装例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">参照</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">著作権</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../a4ed/">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c16b/">FEP-c16b: MFM関数のフォーマット</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../d556/">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dd4b/">FEP-dd4b: 引用投稿</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">67ff</li>
+      <li class="breadcrumb-item active">FEP-67ff: FEDERATION.md</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/67ff/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-67ff-federationmd">FEP-67ff: FEDERATION.md</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025年08月16日 23時15分</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/67ff/fep-67ff.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p><code>FEDERATION.md</code> は、連合型サービスとの相互運用性を実現するために必要な情報を含むファイルです。これは元々、Darius Kazemi 氏によって SocialHub フォーラムの <a href="https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453">半標準的な方法での連合動作の文書化？</a> というトピックで提案されました。</p>
+<h2 id="_2">要件</h2>
+<p>本文書におけるキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」は、<a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a> で記述されている通りに解釈されるものとします。</p>
+<h2 id="_3">構造</h2>
+<p><code>FEDERATION.md</code> ファイルは任意の構造と内容を持つことができます。唯一の要件は以下の通りです。</p>
+<ul>
+<li>有効な Markdown ドキュメントであること。</li>
+<li>プロジェクトのコードリポジトリのルートに配置されていること。プロジェクトのドキュメントが別の場所にある場合、<code>FEDERATION.md</code> ファイルはその場所へのリンクを含むことができます。</li>
+<li>実装されている連合プロトコルのリストを含むべきです。</li>
+<li>サポートされている Fediverse Enhancement Proposals (FEP) のリストを含むべきです。</li>
+</ul>
+<h2 id="_4">テンプレート</h2>
+<p>(このセクションは規範的ではありません。)</p>
+<pre><code class="language-markdown"># Federation
+
+## Supported federation protocols and standards
+
+- [ActivityPub](https://www.w3.org/TR/activitypub/) (Server-to-Server)
+- [WebFinger](https://webfinger.net/)
+- [Http Signatures](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures)
+- [NodeInfo](https://nodeinfo.diaspora.software/)
+
+## Supported FEPs
+
+- [FEP-f1d5: NodeInfo in Fediverse Software](https://codeberg.org/fediverse/fep/src/branch/main/fep/f1d5/fep-f1d5.md)
+
+## ActivityPub
+
+&lt;!-- Describe activities and extensions. --&gt;
+
+## Additional documentation
+
+&lt;!-- Add links to documentation pages. --&gt;
+</code></pre>
+<h2 id="_5">実装例</h2>
+<ul>
+<li><a href="https://github.com/lowercasename/gathio/blob/main/FEDERATION.md">gathio</a></li>
+<li><a href="https://codeberg.org/streams/streams/src/branch/dev/FEDERATION.md">Streams</a></li>
+<li><a href="https://github.com/grishka/Smithereen/blob/master/FEDERATION.md">Smithereen</a></li>
+<li><a href="https://github.com/mastodon/mastodon/blob/main/FEDERATION.md">Mastodon</a></li>
+<li><a href="https://github.com/hometown-fork/hometown/blob/hometown-dev/FEDERATION.md">Hometown</a></li>
+<li><a href="https://codeberg.org/silverpill/mitra/src/branch/main/FEDERATION.md">Mitra</a></li>
+<li><a href="https://github.com/EmissarySocial/emissary/blob/main/FEDERATION.md">Emissary</a></li>
+<li><a href="https://codeberg.org/ForgeFed/Vervis/src/branch/main/FEDERATION.md">Vervis</a></li>
+<li><a href="https://github.com/Automattic/wordpress-activitypub/blob/master/FEDERATION.md">WordPress</a></li>
+<li><a href="https://github.com/ckolderup/postmarks/blob/main/FEDERATION.md">Postmarks</a></li>
+<li><a href="https://bovine-herd.readthedocs.io/en/latest/FEDERATION/">Bovine</a> in <a href="https://codeberg.org/bovine/bovine/src/branch/main/bovine_herd/docs/docs/FEDERATION.md">repo</a> and the <a href="https://codeberg.org/bovine/bovine/src/branch/main/FEDERATION.md">symlink</a></li>
+<li><a href="https://github.com/bookwyrm-social/bookwyrm/blob/main/FEDERATION.md">BookWyrm</a></li>
+<li><a href="https://github.com/importantimport/hatsu/blob/main/FEDERATION.md">Hatsu</a></li>
+<li><a href="https://github.com/dimkr/tootik/blob/main/FEDERATION.md">tootik</a></li>
+<li><a href="https://github.com/snarfed/bridgy-fed/blob/main/FEDERATION.md">Bridgy Fed</a></li>
+<li><a href="https://git.friendi.ca/friendica/friendica/src/branch/develop/FEDERATION.md">Friendica</a></li>
+<li><a href="https://codeberg.org/rimu/pyfedi/src/branch/main/FEDERATION.md">PieFed</a></li>
+<li><a href="https://akkoma.dev/AkkomaGang/akkoma/src/branch/stable/FEDERATION.md">Akkoma</a></li>
+<li><a href="https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/src/branch/dev/FEDERATION.md">Iceshrimp.NET</a></li>
+<li><a href="https://codeberg.org/fortified/forte/src/branch/dev/FEDERATION.md">Forte</a></li>
+<li><a href="https://github.com/neodb-social/neodb/blob/main/FEDERATION.md">NeoDB</a></li>
+<li><a href="https://github.com/steve-bate/firm/blob/main/FEDERATION.md">FIRM</a></li>
+<li><a href="https://github.com/VernissageApp/VernissageServer/blob/main/FEDERATION.md">Vernissage</a></li>
+<li><a href="https://github.com/fedi-libs/apkit/blob/main/FEDERATION.md">apkit</a></li>
+<li><a href="https://github.com/stefanhayden/tvmarks/blob/main/FEDERATION.md">Tvmarks</a></li>
+<li><a href="https://github.com/manyfold3d/manyfold/blob/main/FEDERATION.md">Manyfold</a></li>
+</ul>
+<h2 id="_6">参照</h2>
+<ul>
+<li>Darius Kazemi, <a href="https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453">半標準的な方法での連合動作の文書化？</a>, 2020</li>
+<li>S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+</ul>
+<h2 id="_7">著作権</h2>
+<p>CC0 1.0 Universal (CC0 1.0) パブリックドメイン献呈</p>
+<p>法的に可能な限り、この Fediverse Enhancement Proposal の著者は、この著作物に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../521a/fep-521a-test-case/" class="btn btn-neutral float-left" title="Actor Objects must express signing key as assertionMethod Multikey"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../844e/" class="btn btn-neutral float-right" title="FEP-844e: 機能発見">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../521a/fep-521a-test-case/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../844e/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

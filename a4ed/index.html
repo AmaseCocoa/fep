@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>FEP-a4ed: Fediverse 拡張提案プロセス - Fediverse Enhancement Proposals 日本語訳</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-a4ed: Fediverse \u62e1\u5f35\u63d0\u6848\u30d7\u30ed\u30bb\u30b9";
+        var mkdocs_page_input_path = "a4ed/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Fediverse Enhancement Proposals 日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Fediverse 機能強化提案</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">521a</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/">FEP-521a: アクターの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../521a/fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">67ff</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">844e</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../844e/">FEP-844e: 機能発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">8b32</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../8b32/">FEP-8b32: オブジェクトの完全性証明</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">9098</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../9098/">FEP-9098: カスタム絵文字</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">A4ed</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-a4ed: Fediverse 拡張提案プロセス</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">範囲と目的</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">言語、文書構造、および形式</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">提案のタイトルと識別子</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">提案の種類</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">メタデータ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">必須セクション</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">著作権</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fediverse">Fediverse 拡張提案プロセス</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">ファシリテーター</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">提出方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fep">FEP プロセスガバナンス</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_11">履歴</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_12">参照</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_13">著作権</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Ae0c</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ae0c/">FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C0e0</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c0e0/">FEP-c0e0: 絵文字リアクション</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">C16b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../c16b/">FEP-c16b: MFM関数のフォーマット</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">D556</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../d556/">FEP-d556: WebFinger を用いたサーバーレベルのアクター発見</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dd4b</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dd4b/">FEP-dd4b: 引用投稿</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">E232</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Eb48</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../eb48/">Timeline Preferences</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">F1d5</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../f1d5/">FEP-f1d5: フェディバースソフトウェアにおけるNodeInfo</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Fediverse Enhancement Proposals 日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">A4ed</li>
+      <li class="breadcrumb-item active">FEP-a4ed: Fediverse 拡張提案プロセス</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep/edit/master/docs/a4ed/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-a4ed-fediverse">FEP-a4ed: Fediverse 拡張提案プロセス</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPは<code>gemini-2.5-flash</code>を利用して<code>2025年08月16日 23時12分</code>に翻訳されました。オリジナルのFEPは<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/a4ed/fep-a4ed.md">ここ</a>から閲覧できます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p>Fediverse 拡張提案（FEP）は、Fediverse コミュニティに情報を提供する文書です。FEP の目標は、Fediverse を形成する多様なサービス、アプリケーション、コミュニティの相互運用性（interoperability）と健全性（well-being）を向上させることです。</p>
+<p>この文書は、Fediverse 拡張提案の範囲、形式、および公開プロセスについて説明します。</p>
+<h2 id="_2">範囲と目的</h2>
+<p>Fediverse 拡張提案（FEP）は、Fediverse コミュニティにとって関心のある特定のトピックについて、簡潔かつ焦点を絞った文書であるべきです。</p>
+<p>提案は常に、Fediverse の多様なサービス、アプリケーション、コミュニティの相互運用性と健全性を向上させる意図を持つべきです。</p>
+<p>Fediverse には、ActivityPub プロトコルや、分散型で多様なソーシャルメディアと文化を育む他のプロトコルを使用するアプリケーション、サービス、コミュニティが含まれます。</p>
+<p>提案には、技術的なプロトコルやメカニズムの説明、実験的な作業や現在のベストプラクティスの文書化が含まれる場合があります。</p>
+<p>提案は技術的なトピックに限定されず、社会的および文化的側面にも焦点を当てることができます。</p>
+<p>提案は（この提案とは異なり）面白く、ユーモラスなものであっても構いません。</p>
+<h2 id="_3">言語、文書構造、および形式</h2>
+<p>すべての Fediverse 拡張提案は英語で書かれ、<a href="https://spec.commonmark.org/0.29/">CommonMark</a> として適切にフォーマットされ、合理的に文法的である必要があります。</p>
+<p>著者は包括的な言葉遣いと例を使用し、<a href="https://tools.ietf.org/html/draft-knodel-terminology">抑圧的な用語</a>の使用を控えるべきです。</p>
+<h3 id="_4">提案のタイトルと識別子</h3>
+<p>すべての Fediverse 拡張提案は、説明的なタイトルを持つ必要があります。</p>
+<p>識別子は、提案のタイトルから sha256 ハッシュの最初の4桁（16進数）として計算されます。識別子は標準的な Unix ツールを使用してタイトルから計算できます。</p>
+<pre><code>$ echo -n &quot;The Fediverse Enhancement Proposal Process&quot; | sha256sum | cut -c-4
+a4ed
+</code></pre>
+<p>タイトルのハッシュを識別子として使用することで、ファシリテーターがユニークな ID を割り当てる負担を軽減します。これにより、提案のタイトルはユニークである必要があります。</p>
+<h3 id="_5">提案の種類</h3>
+<p>Fediverse 拡張提案は以下の種類に分類されます。</p>
+<ul>
+<li>情報提供文書</li>
+<li>実装提案</li>
+</ul>
+<h3 id="_6">メタデータ</h3>
+<p>提案のメタデータは、文書の冒頭に開始と終了の ~---~ の間にキーと値のペアとして配置されます。</p>
+<p>以下のメタデータキーと値のペアが提案の冒頭に配置される場合があります。</p>
+<ul>
+<li><code>type</code>：提案の種類を示します。<code>informational</code> または <code>implementation</code> のいずれかです。</li>
+<li><code>slug</code>：提案の識別子です。値は二重引用符で囲む必要があります（例：<code>"a4ed"</code>）。</li>
+<li><code>authors</code>：提案の著者のコンマ区切りリストです。リストの各項目には、著者の名前の後に山括弧で囲まれた連絡先アドレスを含める必要があります（例：<code>Alyssa P. Hacker &lt;alyssa.p.hacker@email.example&gt;</code>、<code>Alyssa P. Hacker &lt;@alyssa.p.hacker@fediverse.example&gt;</code>）。</li>
+<li><code>status</code>：提案のステータスを示します。<code>DRAFT</code>、<code>WITHDRAWN</code>、または <code>FINAL</code> のいずれかです。</li>
+<li><code>dateReceived</code>：提案がリポジトリに追加された日付です（ステータスが <code>DRAFT</code> に設定された場合）。</li>
+<li><code>dateWithdrawn</code>：提案のステータスが <code>WITHDRAWN</code> に設定された日付です（ステータスが <code>WITHDRAWN</code> の提案のみ）。</li>
+<li><code>dateFinalized</code>：提案のステータスが <code>FINAL</code> に設定された日付です（ステータスが <code>FINAL</code> の提案のみ）。</li>
+<li><code>trackingIssue</code>：提案のトラッキングイシューへのリンクです。</li>
+<li><code>discussionsTo</code>：議論へのリンクです。</li>
+<li><code>relatedFeps</code>：関連する FEP のコンマ区切りリストです（例：<code>FEP-a4ed, FEP-141a, FEP-686f</code>）。</li>
+<li><code>replaces</code>：提案によって置き換えられる FEP のコンマ区切りリストです。</li>
+<li><code>replacedBy</code>：提案を置き換える FEP の識別子です。</li>
+</ul>
+<h3 id="_7">必須セクション</h3>
+<p>すべての FEP は、少なくとも以下のセクションを含むべきです。</p>
+<ul>
+<li>概要：提案の短い（200語以内）要約。</li>
+<li>著作権：提案がパブリックドメインに置かれていることを示すもの。</li>
+</ul>
+<p>以下のセクションは提案に含まれる場合があります。</p>
+<ul>
+<li>履歴：以前の関連する取り組みの概要と、それらが提案にどのように関連するか。</li>
+<li>実装：該当する場合、提出時に提案を実装しているサービスまたはアプリケーションの概要。</li>
+<li>参照：提案によって参照される文書およびリソースのリスト。</li>
+</ul>
+<h3 id="_8">著作権</h3>
+<p>Fediverse 拡張提案は、著者が CC0 1.0 Universal (CC0 1.0) Public Domain Dedication を用いてパブリックドメインに置く必要があります。</p>
+<h2 id="fediverse">Fediverse 拡張提案プロセス</h2>
+<pre><code class="language-mermaid">stateDiagram-v2
+    accTitle: FEP process flowchart
+    accDescr {
+        The process begins from the &quot;DRAFT&quot; status, followed by either of the &quot;FINAL&quot; or &quot;WITHDRAWN&quot; status.
+        The &quot;WITHDRAWN&quot; status can go back to the &quot;DRAFT&quot; status.
+    }
+    [*] --&gt; DRAFT
+    DRAFT --&gt; FINAL
+    DRAFT --&gt; WITHDRAWN
+    WITHDRAWN --&gt; DRAFT
+    FINAL --&gt; [*]
+</code></pre>
+<ol>
+<li>Fediverse 拡張提案は、個人または個人のグループ（著者）によって提出できます。承認された提出方法のリストについては、<code>SUBMISSION.md</code> ファイルを参照してください。</li>
+<li>7日以内に、ファシリテーターの1人が提案を読み、返答します。ファシリテーターは、提案が必要な構造に準拠しており、FEP の範囲と目的に適合しているかを確認します。ファシリテーターは著者に、提案の明確化、正当化、または撤回を要求する場合があります。このような要求は、ファシリテーターの個人的な偏見を反映してはなりません。むしろ、提出物の高い品質を維持するために厳密に行われます。ファシリテーターは、提案がプロセスの露骨な悪用にあたる場合、提出を拒否する権利を留保します。提出された提案が却下されたり、明確化が要求されたりした場合、著者はより広範なコミュニティからのフィードバックを求めることができます。</li>
+<li>FEP ファシリテーターが提出を承認した場合、その提出は <code>DRAFT</code> ステータスを受け取り、リポジトリに追加されます。ファシリテーターはまた、提案のトラッキングイシューを作成し、提案のメタデータに <code>trackingIssue</code> 属性を追加します。<ul>
+<li>登録された提案には、以下のメタデータ属性が必要です：<code>slug</code>、<code>authors</code>、<code>status</code>、<code>dateReceived</code>、<code>trackingIssue</code>、および <code>discussionsTo</code>。</li>
+<li>ステータスが <code>FINAL</code> または <code>WITHDRAWN</code> に変更された場合、ファシリテーターは提案のメタデータに <code>dateFinalized</code> または <code>dateWithdrawn</code> 属性を追加します。</li>
+</ul>
+</li>
+<li>提案が <code>DRAFT</code> ステータスである間：<ul>
+<li>著者はコミュニティの議論を開始し、フィードバックを収集する責任があります。</li>
+<li>著者は提案の更新を提出することができ、それはファシリテーターによってリポジトリにチェックインされます。他の者も更新を提出できますが、この場合、変更は少なくとも1人の著者によって承認される必要があります。</li>
+<li>著者は提出を撤回することができ、その場合、ファシリテーターは提出のステータスを <code>WITHDRAWN</code> に設定します。</li>
+</ul>
+</li>
+<li>少なくとも60日後、著者は提案の最終化を要求することができます。これは、提案に対する最終コメントを要求することによって行われます。<ul>
+<li>14日以内にコミュニティからの異議がなく、著者が提案について十分な認識と議論を開始したことを示せる場合、ファシリテーターは提出のステータスを <code>FINAL</code> に設定します。</li>
+</ul>
+</li>
+<li>著者が提案の最終化を要求せず、2年以上更新がない場合、ファシリテーターは提出のステータスを <code>WITHDRAWN</code> に設定します。</li>
+<li><code>FINAL</code> ステータスの提案は、実装の調整につながるような方法で変更または更新することはできません。軽微な修正は許可されます。</li>
+<li>最終化された提案に対する実質的な変更は、別の FEP として提出する必要があります。<ul>
+<li>新しい FEP は、それが置き換える FEP を指す <code>replaces</code> メタデータ属性を含まなければなりません（MUST）。</li>
+<li>新しい FEP が <code>FINAL</code> になった場合、元の FEP は追加された <code>replacedBy</code> メタデータ属性でそれを指さなければなりません（MUST）。</li>
+</ul>
+</li>
+<li><code>WITHDRAWN</code> ステータスの提案はリポジトリに残り、再提出することができます。</li>
+<li>提案が <code>FINAL</code> になった後、ファシリテーターはトラッキングイシューにリンクされているすべての議論をアーカイブし、結果として得られるアーカイブリンクをトラッキングイシューに追加します。</li>
+</ol>
+<h3 id="_9">ファシリテーター</h3>
+<p>ファシリテーターのリストは、FEP リポジトリのルートにある <code>FACILITATORS.md</code> ファイルで管理されています。</p>
+<h3 id="_10">提出方法</h3>
+<p>提案が提出される可能性のある方法のリストは、FEP リポジトリのルートにある <code>SUBMISSION.md</code> ファイルで管理されています。</p>
+<h3 id="fep">FEP プロセスガバナンス</h3>
+<p>FEP-a4ed（Fediverse 拡張提案プロセス）は生きた文書であり、<code>FINAL</code> ステータスであっても更新することができます。</p>
+<p>誰でも <code>SUBMISSION.md</code> ファイルに記載されているいずれかの方法を使用して、FEP-a4ed（または FEP プロセスに関連する他の文書）への変更を提案できます。変更は少なくとも2人のファシリテーターによって承認される必要があります（そのうちの1人は提出者である可能性があります）。FEP プロセスのいかなる部分についても、メンテナンス作業を行うことに同意した十分な数のファシリテーターが存在する必要があります。変更は、ファシリテーターとコミュニティがそれらをレビューし、フィードバックを提供する時間を与えるため、最後の更新から少なくとも1ヶ月が経過するまで承認されるべきではありません。</p>
+<p>軽微な変更（例：誤植の修正や壊れたリンクの修正）は、ファシリテーターから2つの承認を得た後、直ちに承認できます。</p>
+<h2 id="_11">履歴</h2>
+<p>この提案で説明されているプロセスと形式は、<a href="http://bittorrent.org/beps/bep_0001.html">BitTorrent Enhancement Proposal Process</a>、<a href="https://srfi.schemers.org/srfi-process.html">Scheme Request for Implementation</a>、および <a href="https://www.rfc-editor.org/info/rfc8729">IETF RFC Series</a> など、他のコミュニティ主導の文書化の取り組みに影響を受けています。</p>
+<h2 id="_12">参照</h2>
+<ul>
+<li>Dave Mason, <a href="https://srfi.schemers.org/srfi-process.html">Scheme Request For Implementation - Process</a></li>
+<li>David Harrison, <a href="http://bittorrent.org/beps/bep_0001.html">The BitTorrent Enhancement Proposal Process</a>, 2008</li>
+<li>Housley, R., Ed., and L. Daigle, Ed., <a href="https://www.rfc-editor.org/info/rfc8729">The RFC Series and RFC Editor</a>, 2020</li>
+<li>John MacFarlane, <a href="https://spec.commonmark.org/0.29/">CommonMark Spec Version 0.29</a>, 2019</li>
+<li>Mallory Knodel, <a href="https://tools.ietf.org/html/draft-knodel-terminology">Terminology, Power and Oppressive Language</a></li>
+</ul>
+<h2 id="_13">著作権</h2>
+<p>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</p>
+<p>法的に可能な限り、この Fediverse 拡張提案の著者は、この著作物に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../9098/" class="btn btn-neutral float-left" title="FEP-9098: カスタム絵文字"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ae0c/" class="btn btn-neutral float-right" title="FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../9098/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ae0c/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
