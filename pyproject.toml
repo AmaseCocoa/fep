@@ -8,7 +8,7 @@ dependencies = [
     "mkdocs>=1.6.1",
     "openai>=1.90.0",
 ]
-license = { file = "LICENSE.md" }
+license = { text = "AGPL-3.0" }
 
 [tool.uv.sources]
 vllm = { url = "https://github.com/SystemPanic/vllm-windows/releases/download/v0.10.0/vllm-0.10.0+cu124-cp312-cp312-win_amd64.whl" }
