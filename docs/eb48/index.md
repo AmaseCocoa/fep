@@ -12,7 +12,7 @@ trackingIssue: https://codeberg.org/fediverse/fep/issues/373
 # FEP-eb48: ハッシュタグ
 
 !!! Warning
-    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/eb48/eb48.md)から閲覧できます。
+    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/eb48/fep-eb48.md)から閲覧できます。
 
 ## 概要
 

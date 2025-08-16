@@ -12,7 +12,7 @@ discussionsTo: https://socialhub.activitypub.rocks/t/fediverse-relays/4626
 # FEP-ae0c: Fediverseリレープロトコル：MastodonとLitePub
 
 !!! Warning
-    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/ae0c/ae0c.md)から閲覧できます。
+    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/ae0c/fep-ae0c.md)から閲覧できます。
 
 
 

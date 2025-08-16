@@ -11,7 +11,7 @@ trackingIssue: https://codeberg.org/fediverse/fep/issues/384
 # FEP-c0e0: 絵文字リアクション
 
 !!! Warning
-    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/c0e0/c0e0.md)から閲覧できます。
+    このFEPは`gemini-2.5-flash`を利用して`2025-08-17`に翻訳されました。オリジナルのFEPは[ここ](https://codeberg.org/fediverse/fep/src/branch/main/fep/c0e0/fep-c0e0.md)から閲覧できます。
 
 ## 概要
 

@@ -107,7 +107,7 @@ async def process_single_file(input_file, output_file, dest_lang, client, system
         final_output = final_output.replace("{{md_body}}", translated_body)
         final_output = final_output.replace("{{llm_model}}", model)
         final_output = final_output.replace("{{date}}", datetime.now().strftime("%Y-%m-%d"))
-        final_output = final_output.replace("{{original_fep_location}}", f"https://codeberg.org/fediverse/fep/src/branch/main/fep/{fep_id}/{fep_id}.md")
+        final_output = final_output.replace("{{original_fep_location}}", f"https://codeberg.org/fediverse/fep/src/branch/main/fep/{fep_id}/fep-{fep_id}.md")
 
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         with open(output_file, 'w', encoding='utf-8') as f:
