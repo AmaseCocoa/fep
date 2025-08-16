@@ -5,7 +5,7 @@ theme:
   locale: ja
 
 docs_dir: docs
-repo_url: https://codeberg.org/AmaseCocoa/fep-ja
+repo_url: https://github.com/AmaseCocoa/fep
 
 markdown_extensions:
   - admonition
