@@ -1,0 +1,11 @@
+site_name: Fediverse Enhancement Proposals 日本語訳
+
+theme: 
+  name: readthedocs
+  locale: ja
+
+docs_dir: docs
+repo_url: https://codeberg.org/AmaseCocoa/fep-ja
+
+markdown_extensions:
+  - admonition

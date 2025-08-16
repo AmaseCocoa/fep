@@ -1,0 +1,22 @@
+[project]
+name = "translate-fep"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs>=1.6.1",
+    "openai>=1.90.0",
+]
+license = { file = "LICENSE.md" }
+
+[tool.uv.sources]
+vllm = { url = "https://github.com/SystemPanic/vllm-windows/releases/download/v0.10.0/vllm-0.10.0+cu124-cp312-cp312-win_amd64.whl" }
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+torchaudio = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

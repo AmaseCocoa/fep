@@ -1,0 +1,2 @@
+# Translate_FEP
+FEPの翻訳用スクリプトと日本語版FEPです。fep以外でもmarkdownファイルなら改造した上で動作すると思います。プロンプトはHackers' Pubのプロンプトを拝借しています。
